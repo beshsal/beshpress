@@ -1,0 +1,112 @@
+.portfolio-item .imgHover {
+	max-height: 200px;
+	padding: 0px;
+	position: relative;
+	border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+	border-bottom-left-radius: calc(.25rem - 1px);
+  border-bottom-right-radius: calc(.25rem - 1px);
+	overflow: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (min-width: 350px) {
+	.portfolio-item .imgHover {
+		max-height: 300px;
+	}
+}
+
+@media screen and (min-width: 447px) {
+	.portfolio-item .imgHover {
+		max-height: 340px;
+	}
+}
+
+@media screen and (min-width: 576px) {
+	.portfolio-item .imgHover {
+		max-height: 180px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.portfolio-item .imgHover {
+		max-height: 230px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.portfolio-item .imgHover {
+		max-height: 190px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.portfolio-item .imgHover {
+		max-height: 230px;
+	}
+}
+
+.portfolio-item div.imgHover:hover .caption {
+	opacity: 1;
+}
+
+.portfolio-item div.imgHover:hover img {
+	opacity: 1;
+	transform: scale(1.15,1.15);
+	-webkit-transform: scale(1.15,1.15);
+	-moz-transform: scale(1.15,1.15);
+	-ms-transform: scale(1.15,1.15);
+	-o-transform: scale(1.15,1.15);
+}
+
+.portfolio-item img {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	z-index: 0;
+}
+
+.portfolio-item .caption {
+	width: 100%;
+	cursor: pointer;
+	position: absolute;
+	opacity: 0;
+	-webkit-transition:all 0.45s ease-in-out;
+	-moz-transition:all 0.45s ease-in-out;
+	-o-transition:all 0.45s ease-in-out;
+	-ms-transition:all 0.45s ease-in-out;
+	transition:all 0.45s ease-in-out;
+}
+
+.portfolio-item img {
+	-webkit-transition:all 0.25s ease-in-out;
+	-moz-transition:all 0.25s ease-in-out;
+	-o-transition:all 0.25s ease-in-out;
+	-ms-transition:all 0.25s ease-in-out;
+	transition:all 0.25s ease-in-out;
+}
+
+.portfolio-item .blur {
+	background-color: rgba(0,0,0,0.75);	
+	height: 300px;
+	width: 100%;
+	z-index: 5;
+	position: absolute;
+}
+
+.portfolio-item .caption-text h1 {
+	text-transform: uppercase;
+	font-size: 1.1em;
+	margin-top: 5%;
+}
+
+.portfolio-item .caption-text {
+	padding: 4px;
+	z-index: 10;
+	color: #fff;
+	position: absolute;
+	height: 300px;
+	width: 100%;	
+	text-align: center;
+	top: 30px;
+}
