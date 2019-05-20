@@ -217,10 +217,10 @@ function removeHttp($url) {
   return $url;
 }
 
-/* CUSTOM SEARCH  */
+/* EXTENDED SEARCH INCLUDING TAXONOMIES  */
 
-add_filter('posts_join', 'custom_posts_join', 10, 2);
-function custom_posts_join($join, $query) {
+// Use the posts_join filter to perform an INNER JOIN of the terms, term_relationship, and term_taxonomy tables on the posts table.
+function beshpress_posts_join($join, $query) {
 
   global $wpdb;
 
@@ -238,14 +238,15 @@ function custom_posts_join($join, $query) {
   }
   return $join;
 }
+add_filter('posts_join', 'beshpress_posts_join', 10, 2);
 
-add_filter('posts_where', 'custom_posts_where', 10, 2);
-function custom_posts_where($where, $query) {
+// Use the posts_where filter to modify the WHERE clause to include searches against a taxonomy.
+function beshpress_posts_where($where, $query) {
 
   global $wpdb;
 
   if (is_main_query() && is_search()) {
-    $user_where = custom_get_user_posts_where();
+    $user_where = get_currentuser_posts_where(); // get a WHERE clause dependent on the current user's status (see the function below)
     $where .= " 
     OR (
       {$wpdb->term_taxonomy}.taxonomy IN('category', 'post_tag')
@@ -256,8 +257,9 @@ function custom_posts_where($where, $query) {
   }
   return $where;
 }
+add_filter('posts_where', 'beshpress_posts_where', 10, 2);
 
-function custom_get_user_posts_where() {
+function get_currentuser_posts_where() {
 
   global $wpdb;
 
@@ -267,6 +269,7 @@ function custom_get_user_posts_where() {
 
   if ($user_id) {
     $status[] = "'private'";
+
     $sql .= " AND {$wpdb->posts}.post_author = {$user_id}";
   }
   
@@ -274,8 +277,8 @@ function custom_get_user_posts_where() {
   return $sql;
 }
 
-add_filter('posts_groupby', 'custom_posts_groupby', 10, 2);
-function custom_posts_groupby($groupby, $query) {
+// Use the posts_groupby filter to condense the results by post ID, i.e. set the GROUP BY clause to post IDs.
+function beshpress_posts_groupby($groupby, $query) {
 
 global $wpdb;
 
@@ -284,6 +287,7 @@ if (is_main_query() && is_search()) {
 }
 return $groupby;
 }
+add_filter('posts_groupby', 'beshpress_posts_groupby', 10, 2);
 
 ?>
 
