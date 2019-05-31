@@ -3,7 +3,7 @@
 BeshPress is a WordPress theme built from scratch, no starter theme and no third-party plugins. The theme includes several custom post types with custom fields and help sections, shortcode, and an extended theme customizer, among other features. Although the theme was created for demonstration purposes, it is available for public use under the MIT license.
 
 ## Requirements
-You must have an installation of WordPress, preferably the latest version, and a local or remote web server. 
+You must have an installation of WordPress, preferably the latest version, on your local or remote web server. 
 
 ## Getting Started
 
